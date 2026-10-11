@@ -5,42 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <!-- font Inter -->
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <script src="js.js" defer></script>
     <title>Document</title>
 </head>
 
 <body>
     <div id="main-container">
-        <div id="display">100+100</div>
+        <div id="display"></div>
         <div id="buttons">
             <div class="row">
-                <div class="button" id="ac">AC</div>
-                <div class="button" id="ce">CE</div>
-                <div class="button" id="backspace"><</div>
-                <div class="button" id="divide">/</div>
+                <button class="delete" id="ac">AC</button>
+                <button class="delete" id="ce">CE</button>
+                <button class="delete" id="backspace">&#x232B;</button>
+                <button class="operation" id="divide">/</button>
             </div>
             <div class="row">
-                <div class="button" id="seven">7</div>
-                <div class="button" id="eight">8</div>
-                <div class="button" id="nine">9</div>
-                <div class="button" id="times">x</div>
+                <button class="number" id="seven">7</button>
+                <button class="number" id="eight">8</button>
+                <button class="number" id="nine">9</button>
+                <button class="operation" id="times">x</button>
             </div>
             <div class="row">
-                <div class="button" id="four">4</div>
-                <div class="button" id="five">5</div>
-                <div class="button" id="six">6</div>
-                <div class="button" id="minus">-</div>
+                <button class="number" id="four">4</button>
+                <button class="number" id="five">5</button>
+                <button class="number" id="six">6</button>
+                <button class="operation" id="minus">-</button>
             </div>
             <div class="row">
-                <div class="button" id="one">1</div>
-                <div class="button" id="two">2</div>
-                <div class="button" id="three">3</div>
-                <div class="button" id="plus">+</div>
+                <button class="number" id="one">1</button>
+                <button class="number" id="two">2</button>
+                <button class="number" id="three">3</button>
+                <button class="operation" id="plus">+</button>
             </div>
             <div class="row">
-                <div class="button" id="zero">0</div>
-                <div class="button" id="dot">.</div>
-                <div class="button" id="equals">=</div>
+                <button class="number" id="zero">0</button>
+                <button class="number" id="dot">.</button>
+                <button id="equals">=</button>
             </div>
         </div>
     </div>

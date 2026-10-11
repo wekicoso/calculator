@@ -4,12 +4,18 @@
     box-sizing: border-box;
 }
 
+html {
+    font-family: "Inter", sans-serif;
+    font-weight: 550;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: rgb(250, 234, 255);
 }
 
 #main-container {
@@ -17,10 +23,13 @@ body {
     flex-direction: column;
     row-gap: 10px;
     padding: 20px;
-    width: 400px;
-    height: 600px;
+    width: 550px;
+    height: 700px;
     border: 2px solid black;
     border-radius: 25px;
+    background-color: rgb(247, 253, 252);
+    border: 1px solid rgb(218, 243, 239);
+    box-shadow: 7px 14px 20px 5px rgb(245, 231, 231);
 }
 
 #display {
@@ -28,10 +37,12 @@ body {
     justify-content: flex-end;
     align-items: flex-end;
     padding: 15px 15px;
-    font-size: 2em;
+    font-size: 2.8em;
     height: 20%;
-    border: 1px solid blue;
+    border: 1px solid rgb(218, 243, 239);
     border-radius: 10px;
+    box-shadow: inset 0px 0px 9px rgb(230, 205, 205);
+    background-color: rgb(218, 243, 239);
 }
 
 #buttons {
@@ -48,15 +59,42 @@ body {
     height: 25%;
 }
 
-#buttons>.row>.button {
+button {
+    font-family: "Roboto", sans-serif;
+    font-size: 2.4em;
+    font-weight: 500;
     flex: 1;
     justify-content: center;
     align-items: center;
     display: flex;
-    font-weight: 400;
-    font-size: 1.7em;
-    border: 1px solid black;
+    border: 2px solid rgb(213, 238, 235);
     border-radius: 13px;
+    cursor: pointer;
+    box-shadow: 1px 1px 22px 2px rgb(245, 231, 231);
+    background-color: rgb(247, 253, 252);
+}
+
+.delete {
+    background-color: rgb(250, 234, 255);
+}
+
+.operation {
+    background-color: rgb(245, 197, 109);
+    color: white;
+}
+
+#backspace {
+    background-color: rgb(250, 240, 255);
+}
+
+button.click {
+    box-shadow: inset 0px 0px 13px rgb(245, 231, 231);
+    font-size: 2.3em;
+}
+
+#equals {
+    background-color: rgb(209, 100, 100);
+    color: white;
 }
 
 #zero {
