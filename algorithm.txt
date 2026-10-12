@@ -1,0 +1,61 @@
+1. create functions add, subtract, multiply, divide
+2. create 3 variables for numbers + operator
+3. create function operate() which takes those 3 variables and after then calls some of the functions from 1st step
+4. create basic html with buttons of numbers, operators, "=" sign, clear button, display etc
+5. create event listeners for buttons which are going to change 3 variables from 2nd step and update display
+6. make it work all together
+
+
+How it should look and what buttons should be on it?
+
+
+******* DISPLAY ******
+AC    CE    back    /
+ 7     8     9      *
+ 4     5     6      -
+ 1     2     3      +
+ ** 0 **     .      =
+
+
+display
++
+buttons: 
+1,2,3,4,5,6,7,8,9,0
+ac
+ce
+< - delete last button choice
+/
+x
+-
++
+=
+
+
+HTML Organisation
+
+display
+buttons
+    .row
+        ac.delete
+        ce.delete
+        backspace.delete
+        divide.operation
+    .row
+        seven.number
+        eight.number
+        nine.number
+        minus.operation
+    .row
+        four.number
+        five.number
+        six.number
+        minus.operation
+    .row
+        one.number
+        two.number
+        three.number
+        plus.operation
+    .row 
+        zero.number
+        dot
+        equals
