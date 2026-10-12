@@ -1,6 +1,6 @@
-let firstNumber = 88;
-let secondNumber = 43;
-let displayText = "";
+let firstNumber = 0;
+let secondNumber = 0;
+let result = 0;
 let operator = "";
 
 const NUMBER = {
@@ -48,19 +48,23 @@ function styleHtml() {
 
 // Operation functions
 function add(first, second) {
-    return first + second;
+    return Number(first) + Number(second);
 }
 
 function substract(first, second) {
-    return first - second;
+    return Number(first) - Number(second);
 }
 
 function divide(first, second) {
-    return first / second;
+    const result = Number(first) / Number(second);
+    if (result == Infinity) {
+        return "Err";
+    }
+    return result;
 }
 
 function times(first, second) {
-    return first * second;
+    return Number(first) * Number(second);
 }
 
 // Handling of operations functions and returning result
@@ -68,16 +72,12 @@ function operate(first, second, operator) {
     switch (operator) {
         case "+":
             return add(first, second);
-            break;
         case "-":
             return substract(first, second);
-            break;
         case "/":
             return divide(first, second);
-            break;
         case "*":
             return times(first, second);
-            break;
     }
 }
 
@@ -86,26 +86,15 @@ display.textContent = DISPLAY.zero;
 
 // Only for updating display
 function addEventListnersToButtons() {
-    // function displayIncludesOperation(textContent) {
-    //     function returnOperation() {
-
-    //     }
-
-
-    //     if (textContent.includes(OPERATIONS.divide)
-    //         || textContent.includes(OPERATIONS.minus)                               
-    //         || textContent.includes(OPERATIONS.plus)                                
-    //         || textContent.includes(OPERATIONS.times)){
-    //             if (r == true) {
-    //                 return 
-    //             }
-    //     } 
-    // }
 
     function getOperator(text) {
         for (let item of text) {
+            if (item == ".") {
+                continue;
+            }
             if (!Number.isInteger(+item)) {
                 return item;
+                
             }
         }
         return "";
@@ -114,19 +103,22 @@ function addEventListnersToButtons() {
     const btnsNumber = document.querySelectorAll(".number");
     btnsNumber.forEach(item => {
         item.addEventListener('click', e => {
-            // If is 0 on display, reset field for numbers to can be typed in
-            if (display.textContent == DISPLAY.zero && e.target.id != "dot" && display.textContent != "0.") {
-                display.textContent = DISPLAY.empty;
-            }
-            // If "dot" clicked, only one is possible
-            if (e.target.id != "dot") {
-                display.textContent += NUMBER[e.target.id];
-            } else {
-                if (!display.textContent.includes(".")) {
+            if (display.textContent.length < 15) {
+                // If is 0 on display, reset field for numbers to can be typed in
+                if (display.textContent == DISPLAY.zero && e.target.id != "dot" && display.textContent != "0." || display.textContent == "Err") {
+                    display.textContent = DISPLAY.empty;
+                }
+
+                // If "dot" clicked, let only one dot is possible on the display
+
+                if (e.target.id != "dot") {
                     display.textContent += NUMBER[e.target.id];
+                } else {
+                    if (!display.textContent.includes(".")) {
+                        display.textContent += NUMBER[e.target.id];
+                    }
                 }
             }
-
         });
     });
 
@@ -135,10 +127,12 @@ function addEventListnersToButtons() {
         item.addEventListener('click', e => {
             if (e.target.id == "ac") {
                 display.textContent = DISPLAY.zero;
+                firstNumber = 0;
+                secondNumber = 0;
             } else if (e.target.id == "ce") {
                 display.textContent = DISPLAY.zero;
             } else if (e.target.id == "backspace") {
-                if (display.textContent.length == 1) {
+                if (display.textContent.length == 1 || display.textContent == "Err") {
                     display.textContent = DISPLAY.zero;
                 } else {
                     display.textContent = display.textContent.slice(0, display.textContent.length - 1);
@@ -150,24 +144,27 @@ function addEventListnersToButtons() {
     const btnsOperation = document.querySelectorAll(".operation");
     btnsOperation.forEach(item => {
         item.addEventListener('click', e => {
-            if (display.textContent != DISPLAY.zero) {
-                display.textContent += OPERATIONS[e.target.id];
-            }
-
-            if (displayIncludesOperation(display.textContent)) {
-
+            if (display.textContent.length < 13) {
+                // Checking if possible to print operator on display
+                if (display.textContent != "Err") {
+                    if (getOperator(display.textContent) == Boolean("")) {
+                        display.textContent += OPERATIONS[e.target.id];
+                    }
+                }
             }
         });
     });
 
     const btnEquals = document.querySelector("#equals");
     btnEquals.addEventListener('click', e => {
-        displayText = display.textContent;
-        operator = getOperator(displayText);
+        operator = getOperator(display.textContent);
 
-        if (operator != "") {
-            [firstNumber, secondNumber] = displayText.split(operator);
+        if (Boolean(operator)) {
+            [firstNumber, secondNumber] = display.textContent.split(operator);
             display.textContent = operate(firstNumber, secondNumber, operator);
+            display.textContent = parseFloat(display.textContent);
+            display.textContent = display.textContent.substring(0, 12);
+            display.textContent = String(Math.floor(+display.textContent * 1000) / 1000);
         }
     });
 }
