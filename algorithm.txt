@@ -59,3 +59,7 @@ buttons
         zero.number
         dot
         equals
+
+
+*** 
+number (0-9)
