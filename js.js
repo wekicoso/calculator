@@ -314,8 +314,8 @@ function updateDisplay(input) {
             }
 
             if (isNaN(firstNumber)) {
-                // alert(`first: ${firstNumber}, second: ${secondNumber}`);
-                alert("prvi");
+            
+      
                 let firstAndSecontString = "";
                 let firstNumberString = "";
                 if (display.textContent.charAt(0) == "-") {
@@ -350,7 +350,7 @@ function updateDisplay(input) {
                 return;
 
             } else if (!isNaN(firstNumber) && !hasOperator(display.textContent.substring(1, length))) {
-                alert("drugi");
+               
                 firstNumber = +display.textContent;
                 result = operate(firstNumber, secondNumber, operator);
 
