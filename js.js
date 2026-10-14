@@ -195,7 +195,7 @@ function updateDisplay(input) {
             display.textContent = "";
             return true;
         }
-        return true;
+
     }
 
     function oneToNinePossible() {
@@ -206,9 +206,10 @@ function updateDisplay(input) {
 
         if (hasOperator(display.textContent.substring(1, length)) && display.textContent.charAt(length - 1) == "0" && display.textContent.charAt(length - 2) != ".") {
             display.textContent = display.textContent.substring(0, length - 1);
+            
             return true;
         }
-
+        
         return true;
     }
 
